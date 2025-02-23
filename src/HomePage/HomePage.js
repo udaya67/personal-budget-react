@@ -6,9 +6,14 @@ function HomePage() {
     const [budgetData, setBudgetData] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3001/api/budget')
+        console.log('Fetching budget data...');
+        axios.get('http://localhost:3000/budget')
             .then((res) => {
-                setBudgetData(res.data);
+                if (res.data && res.data.myBudget) {
+                    setBudgetData(res.data.myBudget);
+                } else {
+                    console.error('myBudget field is missing in the response');
+                }
             })
             .catch((error) => {
                 console.error('Error fetching budget data:', error);
@@ -18,6 +23,7 @@ function HomePage() {
     return (
         <div className="container center">
             <div className="page-area">
+
                 <article className="text-box">
                     <h1>Stay on track</h1>
                     <p>
@@ -26,14 +32,14 @@ function HomePage() {
                         app will help you with that!
                     </p>
                 </article>
-                
+
                 <article className="text-box">
                     <h1>Alerts</h1>
                     <p>
                         What if your clothing budget ended? You will get an alert. The goal is to never go over the budget.
                     </p>
                 </article>
-          
+
                 <article className="text-box">
                     <h1>Results</h1>
                     <p>
@@ -52,3 +58,5 @@ function HomePage() {
 }
 
 export default HomePage;
+
+
