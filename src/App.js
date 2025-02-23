@@ -3,8 +3,8 @@ import './App.css';
 import HomePage from './HomePage/HomePage';
 import Menu from './Menu/Menu';
 import Hero from './Hero/Hero';
-import Footer from './Footer/Footer';
 import LoginPage from './LoginPage/LoginPage';
+import BudgetCharts from './components/BudgetCharts';
 import {
   BrowserRouter as Router,
   Route,
@@ -23,6 +23,7 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/charts" element={<BudgetCharts />} />
         </Routes>
       </div>
     </Router>
